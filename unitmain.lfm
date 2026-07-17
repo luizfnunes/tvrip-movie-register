@@ -1,0 +1,1174 @@
+object FormMain: TFormMain
+  Left = -26
+  Height = 680
+  Top = 47
+  Width = 1366
+  Caption = 'Gerenciador de Filmes'
+  ClientHeight = 0
+  ClientWidth = 0
+  Constraints.MinHeight = 680
+  Constraints.MinWidth = 1215
+  Menu = MainMenu1
+  Position = poDesktopCenter
+  LCLVersion = '4.6.0.0'
+  WindowState = wsMaximized
+  OnActivate = FormActivate
+  object GroupBoxMovieList: TGroupBox
+    Left = 0
+    Height = 0
+    Top = 0
+    Width = 0
+    Align = alClient
+    BorderSpacing.Around = 7
+    Caption = 'Lista de Filmes'
+    ClientHeight = 0
+    ClientWidth = 0
+    TabOrder = 0
+    object Panel7: TPanel
+      Left = 0
+      Height = 34
+      Top = 0
+      Width = 0
+      Align = alTop
+      BorderSpacing.Around = 5
+      BevelOuter = bvNone
+      ClientHeight = 34
+      ClientWidth = 0
+      TabOrder = 0
+      object LabelSearch: TLabel
+        Left = 0
+        Height = 24
+        Top = 5
+        Width = 41
+        Align = alLeft
+        BorderSpacing.Around = 5
+        Caption = 'Buscar: '
+        Layout = tlCenter
+      end
+      object EditSearch: TEdit
+        Left = -1
+        Height = 24
+        Top = 5
+        Width = 0
+        Align = alClient
+        BorderSpacing.Around = 5
+        TabOrder = 0
+      end
+      object LabelField: TLabel
+        Left = -46
+        Height = 24
+        Top = 5
+        Width = 45
+        Align = alRight
+        BorderSpacing.Around = 5
+        Caption = 'Campo: '
+        Layout = tlCenter
+      end
+      object CBField: TComboBox
+        Left = -100
+        Height = 23
+        Top = 5
+        Width = 100
+        Align = alRight
+        BorderSpacing.Around = 5
+        ItemHeight = 15
+        ItemIndex = 0
+        Items.Strings = (
+          'TITULO'
+          'ID'
+          'SESSAO'
+          'ANO'
+          'DURACAO'
+          'LANCAMENTO'
+          'SINOPSE'
+          'ARQUIVO'
+          'TAMANHO'
+          'VINHETA'
+          'COMERCIAIS'
+          'OBSERVACOES'
+        )
+        Style = csDropDownList
+        TabOrder = 1
+        Text = 'TITULO'
+      end
+      object SBSearch: TSpeedButton
+        Left = -32
+        Height = 30
+        Top = 2
+        Width = 32
+        Align = alRight
+        BorderSpacing.Left = 3
+        BorderSpacing.Right = 3
+        BorderSpacing.Around = 2
+        Images = ImageListMain
+        ImageIndex = 0
+        OnClick = SBSearchClick
+      end
+      object SBClear: TSpeedButton
+        Left = -32
+        Height = 30
+        Top = 2
+        Width = 32
+        Align = alRight
+        BorderSpacing.Left = 3
+        BorderSpacing.Right = 3
+        BorderSpacing.Around = 2
+        Images = ImageListMain
+        ImageIndex = 1
+        OnClick = SBClearClick
+      end
+    end
+    object PanelRegistry: TPanel
+      Left = 0
+      Height = 32
+      Top = -31
+      Width = 0
+      Align = alBottom
+      BevelOuter = bvNone
+      Caption = 'Total de Registros: 8'
+      TabOrder = 1
+    end
+    object DBGrid1: TDBGrid
+      Left = 0
+      Height = 0
+      Top = 2
+      Width = 0
+      Align = alClient
+      AutoFillColumns = True
+      Color = clWindow
+      Columns = <      
+        item
+          Title.Caption = 'Filme'
+          Width = 0
+          FieldName = 'TITULO'
+        end>
+      DataSource = DataSourceMovies
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      TabOrder = 2
+    end
+  end
+  object Panel10: TPanel
+    Left = -854
+    Height = 0
+    Top = 0
+    Width = 854
+    Align = alRight
+    BevelOuter = bvNone
+    Caption = 'Panel10'
+    ClientHeight = 0
+    ClientWidth = 854
+    TabOrder = 1
+    object GroupBoxCover: TGroupBox
+      Left = 633
+      Height = 0
+      Top = -1
+      Width = 214
+      Align = alRight
+      BorderSpacing.Around = 7
+      Caption = 'Capa do Filme'
+      ClientHeight = 0
+      ClientWidth = 210
+      TabOrder = 0
+      object ImageCover: TImage
+        Left = 7
+        Height = 0
+        Top = -1
+        Width = 196
+        Align = alClient
+        BorderSpacing.Around = 7
+        Stretch = True
+      end
+      object BtnSelImage: TBitBtn
+        Left = 7
+        Height = 38
+        Top = -38
+        Width = 196
+        Align = alBottom
+        BorderSpacing.Around = 7
+        Caption = 'Selecionar Imagem'
+        Images = ImageListMain
+        ImageIndex = 7
+        TabOrder = 0
+        OnClick = BtnSelImageClick
+      end
+      object DBECover: TDBEdit
+        Left = 7
+        Height = 23
+        Top = -23
+        Width = 196
+        DataField = 'CAPA'
+        DataSource = DataSourceMovies
+        ReadOnly = True
+        Align = alBottom
+        BorderSpacing.Around = 7
+        Enabled = False
+        MaxLength = 255
+        TabOrder = 1
+      end
+    end
+    object GroupBoxMovieData: TGroupBox
+      Left = 7
+      Height = 0
+      Top = -1
+      Width = 619
+      Align = alClient
+      BorderSpacing.Around = 7
+      Caption = 'Dados do Filme'
+      ClientHeight = 0
+      ClientWidth = 615
+      TabOrder = 1
+      object Panel1: TPanel
+        Left = 0
+        Height = 58
+        Top = 0
+        Width = 615
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 58
+        ClientWidth = 615
+        TabOrder = 0
+        object DBEID: TDBEdit
+          Left = 8
+          Height = 23
+          Top = 24
+          Width = 80
+          DataField = 'ID'
+          DataSource = DataSourceMovies
+          Alignment = taRightJustify
+          Enabled = False
+          MaxLength = 0
+          TabOrder = 0
+        end
+        object LabelID: TLabel
+          Left = 8
+          Height = 15
+          Top = 8
+          Width = 14
+          Caption = 'ID:'
+        end
+        object LabelTitle: TLabel
+          Left = 96
+          Height = 15
+          Top = 8
+          Width = 34
+          Caption = 'Título:'
+        end
+        object DBETitle: TDBEdit
+          Left = 96
+          Height = 23
+          Top = 24
+          Width = 504
+          DataField = 'TITULO'
+          DataSource = DataSourceMovies
+          MaxLength = 100
+          TabOrder = 1
+        end
+      end
+      object Panel2: TPanel
+        Left = 0
+        Height = 58
+        Top = 0
+        Width = 615
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 58
+        ClientWidth = 615
+        TabOrder = 1
+        object DBEYear: TDBEdit
+          Left = 8
+          Height = 23
+          Top = 24
+          Width = 80
+          DataField = 'ANO'
+          DataSource = DataSourceMovies
+          Alignment = taRightJustify
+          MaxLength = 0
+          TabOrder = 0
+        end
+        object LabelYear: TLabel
+          Left = 8
+          Height = 15
+          Top = 8
+          Width = 25
+          Caption = 'Ano:'
+        end
+        object LabelCountry: TLabel
+          Left = 96
+          Height = 15
+          Top = 8
+          Width = 21
+          Caption = 'País'
+        end
+        object LabelDuration: TLabel
+          Left = 400
+          Height = 15
+          Top = 8
+          Width = 79
+          Caption = 'Duração (min):'
+        end
+        object LabelRelease: TLabel
+          Left = 492
+          Height = 15
+          Top = 8
+          Width = 69
+          Caption = 'Lançamento:'
+        end
+        object DBEdit3: TDBEdit
+          Left = 400
+          Height = 23
+          Top = 24
+          Width = 80
+          DataField = 'DURACAO'
+          DataSource = DataSourceMovies
+          Alignment = taRightJustify
+          MaxLength = 0
+          TabOrder = 1
+        end
+        object DBLCountry: TDBLookupComboBox
+          Left = 96
+          Height = 23
+          Top = 24
+          Width = 296
+          DataField = 'ID_PAIS'
+          DataSource = DataSourceMovies
+          KeyField = 'ID'
+          ListField = 'PAIS'
+          ListFieldIndex = 0
+          ListSource = DataSourceCountries
+          LookupCache = False
+          TabOrder = 2
+        end
+        object DBDateRelease: TDBDateEdit
+          Left = 492
+          Height = 23
+          Top = 24
+          Width = 111
+          CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+          DateOrder = doNone
+          ButtonWidth = 23
+          NumGlyphs = 1
+          MaxLength = 0
+          TabOrder = 3
+          DataField = 'LANCAMENTO'
+          DataSource = DataSourceMovies
+        end
+      end
+      object Panel3: TPanel
+        Left = 0
+        Height = 58
+        Top = 0
+        Width = 615
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 58
+        ClientWidth = 615
+        TabOrder = 2
+        object LabelGender: TLabel
+          Left = 8
+          Height = 15
+          Top = 8
+          Width = 41
+          Caption = 'Gênero:'
+        end
+        object LabelClass: TLabel
+          Left = 297
+          Height = 15
+          Top = 8
+          Width = 71
+          Caption = 'Classificação:'
+        end
+        object DBLGender: TDBLookupComboBox
+          Left = 8
+          Height = 23
+          Top = 24
+          Width = 276
+          DataField = 'ID_GENERO'
+          DataSource = DataSourceMovies
+          KeyField = 'ID'
+          ListField = 'GENERO'
+          ListFieldIndex = 0
+          ListSource = DataSourceGenders
+          LookupCache = False
+          TabOrder = 0
+        end
+        object DBLClassification: TDBLookupComboBox
+          Left = 297
+          Height = 23
+          Top = 24
+          Width = 306
+          DataField = 'ID_CLASSIFICACAO'
+          DataSource = DataSourceMovies
+          KeyField = 'ID'
+          ListField = 'CLASSIFICACAO'
+          ListFieldIndex = 0
+          ListSource = DataSourceClassifications
+          LookupCache = False
+          TabOrder = 1
+        end
+      end
+      object Panel9: TPanel
+        Left = 0
+        Height = 58
+        Top = 0
+        Width = 615
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 58
+        ClientWidth = 615
+        TabOrder = 3
+        object LabelType: TLabel
+          Left = 8
+          Height = 15
+          Top = 8
+          Width = 27
+          Caption = 'Tipo:'
+        end
+        object LabelEmiss: TLabel
+          Left = 144
+          Height = 15
+          Top = 8
+          Width = 50
+          Caption = 'Emissora:'
+        end
+        object LabelSession: TLabel
+          Left = 296
+          Height = 15
+          Top = 8
+          Width = 38
+          Caption = 'Sessão:'
+        end
+        object DBLType: TDBLookupComboBox
+          Left = 8
+          Height = 23
+          Top = 24
+          Width = 126
+          DataField = 'ID_TIPO'
+          DataSource = DataSourceMovies
+          KeyField = 'ID'
+          ListField = 'TIPO'
+          ListFieldIndex = 0
+          ListSource = DataSourceTypes
+          LookupCache = False
+          TabOrder = 0
+        end
+        object DBLEmissora: TDBLookupComboBox
+          Left = 144
+          Height = 23
+          Top = 24
+          Width = 140
+          DataField = 'ID_EMISSORA'
+          DataSource = DataSourceMovies
+          KeyField = 'ID'
+          ListField = 'EMISSORA'
+          ListFieldIndex = 0
+          ListSource = DataSourceEmissoras
+          LookupCache = False
+          TabOrder = 1
+        end
+        object DBESession: TDBEdit
+          Left = 297
+          Height = 23
+          Top = 24
+          Width = 306
+          DataField = 'SESSAO'
+          DataSource = DataSourceMovies
+          MaxLength = 100
+          TabOrder = 2
+        end
+      end
+      object Panel11: TPanel
+        Left = 0
+        Height = 0
+        Top = 0
+        Width = 615
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 0
+        ClientWidth = 615
+        TabOrder = 4
+        object Label1: TLabel
+          Left = 7
+          Height = 15
+          Top = 0
+          Width = 603
+          Align = alTop
+          BorderSpacing.Left = 2
+          BorderSpacing.Around = 5
+          Caption = 'Sinopse:'
+        end
+        object DBMSinpsys: TDBMemo
+          Left = 5
+          Height = 0
+          Top = 0
+          Width = 600
+          Align = alClient
+          BorderSpacing.Right = 5
+          BorderSpacing.Around = 5
+          DataField = 'SINOPSE'
+          DataSource = DataSourceMovies
+          TabOrder = 0
+        end
+      end
+    end
+    object GroupBox1: TGroupBox
+      Left = 7
+      Height = 212
+      Top = -212
+      Width = 840
+      Align = alBottom
+      BorderSpacing.Around = 7
+      Caption = 'Dados do Arquivo'
+      ClientHeight = 192
+      ClientWidth = 836
+      TabOrder = 2
+      object Panel4: TPanel
+        Left = 0
+        Height = 58
+        Top = 0
+        Width = 836
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 58
+        ClientWidth = 836
+        TabOrder = 0
+        object LabelSize: TLabel
+          Left = 730
+          Height = 15
+          Top = 8
+          Width = 79
+          Anchors = [akTop, akRight]
+          Caption = 'Tamanho (MB)'
+        end
+        object LabelFile: TLabel
+          Left = 7
+          Height = 15
+          Top = 8
+          Width = 45
+          Caption = 'Arquivo:'
+        end
+        object LabelPlace: TLabel
+          Left = 562
+          Height = 15
+          Top = 8
+          Width = 31
+          Anchors = [akTop, akRight]
+          Caption = 'Local:'
+        end
+        object LabelQuality: TLabel
+          Left = 359
+          Height = 15
+          Top = 8
+          Width = 57
+          Caption = 'Qualidade:'
+        end
+        object DBEFile: TDBEdit
+          Left = 6
+          Height = 23
+          Top = 24
+          Width = 344
+          DataField = 'ARQUIVO'
+          DataSource = DataSourceMovies
+          MaxLength = 200
+          TabOrder = 0
+        end
+        object DBESize: TDBEdit
+          Left = 728
+          Height = 23
+          Top = 24
+          Width = 96
+          DataField = 'TAMANHO'
+          DataSource = DataSourceMovies
+          Alignment = taRightJustify
+          MaxLength = 0
+          TabOrder = 1
+        end
+        object DBLQuality: TDBLookupComboBox
+          Left = 359
+          Height = 23
+          Top = 24
+          Width = 193
+          DataField = 'ID_QUALIDADE'
+          DataSource = DataSourceMovies
+          KeyField = 'ID'
+          ListField = 'QUALIDADE'
+          ListFieldIndex = 0
+          ListSource = DataSourceQualities
+          LookupCache = False
+          TabOrder = 2
+        end
+        object DBLPlace: TDBLookupComboBox
+          Left = 560
+          Height = 23
+          Top = 24
+          Width = 160
+          DataField = 'ID_LOCAL'
+          DataSource = DataSourceMovies
+          KeyField = 'ID'
+          ListField = 'LOCAIS'
+          ListFieldIndex = 0
+          ListSource = DataSourcePlaces
+          LookupCache = False
+          TabOrder = 3
+        end
+      end
+      object Panel5: TPanel
+        Left = 2
+        Height = 20
+        Top = 60
+        Width = 832
+        Align = alTop
+        BorderSpacing.Around = 2
+        BevelOuter = bvNone
+        ClientHeight = 20
+        ClientWidth = 832
+        TabOrder = 1
+        object DBCBVinheta: TDBCheckBox
+          Left = 5
+          Height = 23
+          Top = 0
+          Width = 90
+          Caption = 'Vinheta'
+          DataField = 'VINHETA'
+          DataSource = DataSourceMovies
+          TabOrder = 0
+          ValueUnchecked = '0'
+        end
+        object DBCBComerciais: TDBCheckBox
+          Left = 102
+          Height = 23
+          Top = 0
+          Width = 90
+          Caption = 'Comerciais'
+          DataField = 'COMERCIAIS'
+          DataSource = DataSourceMovies
+          TabOrder = 1
+          ValueUnchecked = '0'
+        end
+      end
+      object Panel6: TPanel
+        Left = 0
+        Height = 110
+        Top = 82
+        Width = 836
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 110
+        ClientWidth = 836
+        TabOrder = 2
+        object LabelObs: TLabel
+          Left = 7
+          Height = 15
+          Top = 5
+          Width = 824
+          Align = alTop
+          BorderSpacing.Left = 2
+          BorderSpacing.Around = 5
+          Caption = 'Observações'
+        end
+        object DBMObs: TDBMemo
+          Left = 7
+          Height = 80
+          Top = 25
+          Width = 824
+          Align = alClient
+          BorderSpacing.Left = 2
+          BorderSpacing.Around = 5
+          DataField = 'OBSERVACOES'
+          DataSource = DataSourceMovies
+          TabOrder = 0
+        end
+      end
+    end
+    object GroupBoxActions: TGroupBox
+      Left = 7
+      Height = 66
+      Top = -66
+      Width = 840
+      Align = alBottom
+      BorderSpacing.Around = 7
+      Caption = 'Ações'
+      ClientHeight = 46
+      ClientWidth = 836
+      TabOrder = 3
+      object BtnNew: TBitBtn
+        Left = 7
+        Height = 32
+        Top = 7
+        Width = 115
+        Align = alLeft
+        BorderSpacing.Around = 7
+        Caption = 'Novo'
+        Enabled = False
+        Images = ImageListMain
+        ImageIndex = 2
+        TabOrder = 0
+        OnClick = BtnNewClick
+      end
+      object BtnSave: TBitBtn
+        Left = 129
+        Height = 32
+        Top = 7
+        Width = 115
+        Align = alLeft
+        BorderSpacing.Around = 7
+        Caption = 'Salvar'
+        Enabled = False
+        Images = ImageListMain
+        ImageIndex = 3
+        TabOrder = 1
+        OnClick = BtnSaveClick
+      end
+      object BtnEdit: TBitBtn
+        Left = 373
+        Height = 32
+        Top = 7
+        Width = 115
+        Align = alLeft
+        BorderSpacing.Around = 7
+        Caption = 'Editar'
+        Enabled = False
+        Images = ImageListMain
+        ImageIndex = 4
+        TabOrder = 2
+        OnClick = BtnEditClick
+      end
+      object BtnDelete: TBitBtn
+        Left = 617
+        Height = 32
+        Top = 7
+        Width = 115
+        Align = alLeft
+        BorderSpacing.Around = 7
+        Caption = 'Excluir'
+        Enabled = False
+        Images = ImageListMain
+        ImageIndex = 6
+        TabOrder = 3
+        OnClick = BtnDeleteClick
+      end
+      object BtnCancel: TBitBtn
+        Left = 495
+        Height = 32
+        Top = 7
+        Width = 115
+        Align = alLeft
+        BorderSpacing.Around = 7
+        Caption = 'Cancelar'
+        Enabled = False
+        Images = ImageListMain
+        ImageIndex = 5
+        TabOrder = 4
+        OnClick = BtnCancelClick
+      end
+      object BtnClear: TBitBtn
+        Left = 251
+        Height = 32
+        Top = 7
+        Width = 115
+        Align = alLeft
+        BorderSpacing.Around = 7
+        Caption = 'Limpar'
+        Enabled = False
+        Images = ImageListMain
+        ImageIndex = 1
+        TabOrder = 5
+        OnClick = BtnClearClick
+      end
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 1304
+    Top = 24
+    object MenuItemArquivo: TMenuItem
+      Caption = 'Arquivo'
+      object MenuItemNovo: TMenuItem
+        Caption = 'Novo'
+        object MenuItemFilme: TMenuItem
+          Caption = 'Filme'
+        end
+        object MenuItemPais: TMenuItem
+          Caption = 'País'
+          OnClick = MenuItemPaisClick
+        end
+        object MenuItemGenero: TMenuItem
+          Caption = 'Gênero'
+          OnClick = MenuItemGeneroClick
+        end
+        object MenuItemClassificacao: TMenuItem
+          Caption = 'Classificação'
+          OnClick = MenuItemClassificacaoClick
+        end
+        object MenuItemTipo: TMenuItem
+          Caption = 'Tipo'
+          OnClick = MenuItemTipoClick
+        end
+        object MenuItemEmissora: TMenuItem
+          Caption = 'Emissora'
+          OnClick = MenuItemEmissoraClick
+        end
+        object MenuItemQualidade: TMenuItem
+          Caption = 'Qualidade'
+          OnClick = MenuItemQualidadeClick
+        end
+        object MenuItemLocal: TMenuItem
+          Caption = 'Local'
+          OnClick = MenuItemLocalClick
+        end
+      end
+      object Separator1: TMenuItem
+        Caption = '-'
+      end
+      object MenuItemSair: TMenuItem
+        Caption = 'Sair'
+        OnClick = MenuItemSairClick
+      end
+    end
+    object MenuItemSobre: TMenuItem
+      Caption = 'Sobre'
+      OnClick = MenuItemSobreClick
+    end
+  end
+  object ImageListMain: TImageList
+    Height = 24
+    Width = 24
+    Left = 1304
+    Top = 87
+    Bitmap = {
+      4C7A080000001800000018000000D82300000000000078DAED9B755855D9F7FF
+      AF3A76B78E883DD658D80D768BAD1820268A62B78E8D8918948480A48A0A8A12
+      2A1297EE4EE96E2E5CB8D4FBBBF6E1A2E088A3337EFEFAFDCEF3BC9FBBD967AD
+      D7DE67ED7DF65927E0F1EA6F1D3A74E8D8AF5FDFC99A0FEE59181B3ECA333531
+      86A98911CCE8D7F0917EDAB1A3872FD0FE312D5AB468C9FBC98DD87D54F629EB
+      BD7D635B90989080B2B232D4DD8A8B8B11161A02AB674F1337AC5F778D5C1AFD
+      04BEC9A993C7034243822B452211729323E06575150E9A3B60AFB11D8EDA7B10
+      F0560365C50528A1763C3DDC2B162F5A708FFC1AFF13B87DFBF69D0F1D507997
+      9C9C04616116423F18C2DFFA3A72A25C204A0F4669121F82683B243A3F8093CE
+      0E447B3C434559093CDCF9156BD7ACBED1BC79F356DFC137929E3163A7A3BD7D
+      A1485888F00F0648F0B642557E0C2AD37D5191E484F2381B88A2CC210A37400E
+      FF3ABCF4E511E7F91C028100E6A626C97DFBF499D010BC5BD7AE3DFF3A73E665
+      6A5A2AD222DD11EB62888A9C0838076643D7B100D75FE4E2A86116B63DC880EC
+      B5543C32B545F68723E03FDC0241612E020302A0BC47A9C1B1E8232929FDC2EA
+      594151B1102136575110C74755BA17341C01AF10C08E0F58BD071EDB022FE857
+      5AE9134401E791687718914E743CB9F9D07C703F83502D1AE02F7BEFE8885251
+      0502CD94519A1A80AAE4F738FF1CB0A436CEEA00CAB7800D67817B16C4DF9380
+      8AC82B28F4BB82C067A751565E097DDD872054BB06F8B20EF6761094881066B1
+      17C244EA7FBC35F61A02A6F6C06523E0A406B0E71AA0614E7CE50420E90AAAA2
+      54116373062542117475B419BFC3B7F9BD65EDDFBE417E9110B1CF552088B243
+      658C2556DCA598503CEE5A0192FAC0F027244B121DC3305360B00990667B1245
+      82123CD4D26A902FD9BBF7E2674F9F0833737291EC7005E9FC3B4875D807D5DB
+      D7606B7C1EAF34CE631871AFA7004AD1741CA49D51C039FA3BC7451D691919B8
+      A77EA7A8217ECF9E3DC6DFBC7E2D30EED3276404DA20C34515299E6A4876398B
+      448703C87DBB1303292E5B6301297F606C001D0369B77F3CF263BDE0EFE78713
+      C78EDA11AA6D0353B4DDE44913AFBE7DF3A63C23E513D23DB511A8D90F3EB75A
+      C0EF764BC4DC6E825EC45F970CCCA23664622B713828049FFCAC90949888C746
+      86A0186C224ED306F84D7BF6E8318DCEDFE0F0884824477A20D46235821F7446
+      A4BE04520CBAE04F3A0716E501B33381D33191880A7C81ACC44876FEE2B5F50B
+      286D937FC2D69786CE5FB64474EDDA75A5C6FD7B080D0941626C28E2DD1E20DC
+      6802A2B5DAE283E972383CDF8BC0104B4447FB2023211ADE9E1ED0D5D642414E
+      16DEF886A29FACCAF7D622D646C7AE5DBAAC5351560EB37EF9A23C34341CB1F1
+      294848CE444252061212D3881D033F5F1F98993EC6D54BE7F1C4DC042FF8C170
+      CBA9C2268F620C55B860FC5B8B369D1A6883B5DDB57BB76E0B268E1F7FEFC2B9
+      736146868F4A9F5A5AE209E9E9134BE83ED41128EDDAE53265F2A4C7A78E1DCA
+      3CA3FF1A932D0AB1C30DF8904DF3CABD806BE33BC7D1583C0F24BB75EBB644A2
+      572F25D221B10EF6FAFDF71D1DDAB79F4EFB87F4E8D66DF3AC1B4EE8A7578461
+      16D538E455D3C6663A8E81B2FBFF69DD6E245E4FDA89E775ADDA8AE7091BCB4E
+      ED7AF4DD38F1B869FA509D74AE8D5D741CFC1C40DEB318B31E78D876E83F5282
+      F7EF37D6BFEE9DFB0EDB2175C2327D986E36B55185DDD4C6CB0C60AE55323A0E
+      1CB390F7DFB6DF581BED7AF4D938ED863306E915D01A528DB52EC08227498CBF
+      9CF7DFB7C635B1EAB3911DC748AD248CD30C15F49AB8F02F7679E1FD9AAD3656
+      DBFF905E6D28315A9AB12549CD78BF6E63B1EACC966471BF3936A51DFF539D3F
+      7FFE57ABB1E653DFF337354C65D8DFFF6693183D6DF644F993D663371F771AB3
+      F1A8719B6E12036AC7A1FBA835F7EE5B4741EEB041428BB63DC7FE2CBB6B9F41
+      138EEAD9243BC666C123AD107651E950D2B209EA3264FA9429F2FAAF542DC231
+      EBF87B8C5A7229AD65DB1ED23F3B4FD6AF5D6362F1CC0AC75EFB61FFDB309CFB
+      10093DCF38AC537D122B77E53D56AB7A416AC5B5F4361DFB6C178FF70F6D9252
+      3337AC5CB7F15D54483042690D5555BF8FFDF651D8F73A04476DC370EB7D38D6
+      DD7A83F1EB34D0B24DF78D6CBE8AE7D477B776DD7B77933DA77B76ABD69B9203
+      C4F94BF5061CAD9E212E2408576EDDC51E4B2FEC7E1E0CE5E74138F32A188BFF
+      32086BD9F9F7B1FF9497B66CDFA9F9E019CB66AD38A3697AC8D20DC7DE8640E5
+      752894CCDD71455D0B764F2CE0F5E11D6E681A6087A907B659046097652094CD
+      FD3075DF6DBB36BF0F18D9107BF89CD592F3F6AB5A1E307A9778D13EA4EAB843
+      38F63CF7C72E734F1CB40981928517CE5EBE0E67EB97707DF31A176FA8618B59
+      30B618FB43C1D80FABEFBDAFF87DC282D3EC189AB668F95B97BE837B76E93774
+      ECB2930F366DBFFFC2E3848573F57DF7589CFF188DBD2F03B0DDC40DFB2C3C71
+      E45528765AFA619BA937B63F0DC1D94BD761636C044FBBB7F8EBCA4D6CD275C3
+      067D5FCA9D9CF0FBC48537D85ADEA5DF90E15BD59FD9FCF5C425EDEEBB20DCE5
+      47E3063F0E076D43B049FF03F63E76C1612B5F1C791D0645531F6C3776C75E4B
+      7FECA0586CD675C1B91BF7F1E2913EDE9A99E0C24D0DAC7BE08CF957ACCB7A8E
+      9BC7FADFB4B3E4A0898AEACFA2AF7D8CC465D7589CFC1005F9C76E587EED294E
+      5B79E1F49B50ECB30EA6B65CB1C7980FE56781D84E315EAFE30CC5C77ED8A2CF
+      C7E98BAA786B6C086B033D9CA7E318BAF6F0AB666D3A8C115F873A0C9EB9F4B2
+      A28163D9461D072CBE60827D7AF6B8E51607158A87A2A917B6E8BCC37E5377EC
+      B30AC666234F6CD07C8F5D8FA9FE9137D66AB9628D9E1FCE51AC2E9C389ADEAD
+      5B570562F66553A436FFA139283573F765D7ED9AB6B841E7CB69C7286C35F3A2
+      63B5C32EBDF738F0D4177B89BD4EC705720F1CA0446C05231FACB8E300391D3E
+      363EF2C7DC33166583464D566529A1F81A5AF77EA06DDB6E120B37DCB62ADEFD
+      C407F3AE5A61F5554B1CB7F4C4E197C134A6819055B7C7E67B6FB0DFC21F9BA9
+      DF8BAFBDC236034F6C32F0C3DC8B36E83E639B75E316EDA41AC8E3B81CABB7D4
+      2C2569E53B59C74D9C71E17D0C763E0D22962796A83EC7764D7BA8D0DF6BB5F9
+      5872E52576187860FD436FCC38F9A4ACC774451BF21F502726DF5C5B9A346D26
+      D16BB4CCA1D9C774B2361BF0B1F0DA4BACBFF5022A46AED84FF371BDAE07169E
+      7F826DBAAE147B7FCC3841EC695BAC1AB7683BE91FD89F73D1C6BF35EBDDA1CF
+      30C56907B48B37DD7A89A3CFFCB1DB2208B2773F40FAE823EC37F6E4D8732E50
+      4CA629DA88D96D7EE63E985DAF9BB7EFB670D0E2BD6F669D362D91557F87B9C7
+      0D71D0CC176B75BC31FD846559F7E95B7F2426DFCBAF3A366DDD41AAE3E02957
+      466C56FD34F7840936E878D6B0A76EFE99987CAF0DE6DFAB792789D59D472FD2
+      FA43EE467EF7E9DB5EFF8B98FC533BADD9659134E2AB73E7576E4DC43969D39F
+      79AEE1E4E4F43F55C317C40E9D798B87CC6C7D43F6520F1D853409FDEDE8A9A7
+      88CE0FE5D14E67339A3F589BD64875C925DE92A133797D3A76FEA94848F59CD2
+      EEF62AF305F6B78AB785BCC0C134771CCB0DC2BE4C1F2824B960758C1DA6F918
+      A1C7CBB368A2AB50CCBBB6D89C37B6D7941F63F7582F717F4BA47A7A20D44489
+      D85B188CF1B16FD027C802BDFD4D21E16782DE0166181E6285D9113698E06588
+      169687C1BBB6349237AED7FAEF9EBC33FA2BC9D85E15EA1427625B4110FA853E
+      03CF55133C37BA3F77D3068FFF77F5F235C10C6AABEB9BCB68F4708B9037BD9F
+      D237E1A37B4E1B627E48F857762014F2FCD1C1D790FC89ED4E1C0F1DFA656D3C
+      A8112BB33AAE5E1B6DBDF53129E8097EB753054F73839027D56B5A3DF6A02E1D
+      78A7646C95621CA198EB87EE81265F31B4302BD41AD6B99F38B172BDFDA48E3E
+      8F303EC01CED9E9F02EFF46C5B8EC9CDEAC68D798B071F1B677BB54C29D71FFD
+      C29E903DF97AE97C91BB06CE277A7E7ECEC7CAACAE9E8DA70E7EF737C6781A1F
+      9EC1F6329A57C73876B7369D9B9D9A6FBAD0D7148B529DC996E2E1AD535F9EC4
+      4FF2F8C2A732ABFBDAAE1169529815DAB0633831C794D7BD4D675EDF8EE33B3E
+      544C5819F90AFDC3A9EF5E5A627BED2FF278404CF73A7C77AEAE9E8DD84722F0
+      31863ADD03EFDEDA045EBF8EE379FD3B2DED64B20F9B939CD1D8F721783ECC56
+      0B63422C201DF694F404D25436CC0CFECC6765696EFF13CE86D9321F9EAF0EC7
+      98E56F0E9EAE3C78033A2D25BE6C6B6325AC8B7F4F6C9A2F7E8C7F1F49E5C5F8
+      D18DD9321FCE97342FD0123C3D053036531383ED581EF586DAD7AAB1F1BA879F
+      DD984F437C9EAE0216D23AC0F3A7FD01CC4603F7B342E054942C5612E2CB0A3E
+      B35899D5D5EE67B6CC8717A0C3F9CF09A478E97EE62FE6696D144EF23444DB60
+      03F0026B6C78FE64EF77BF463EEA389FC2FF32BE5466759FF7335BE643BE8C31
+      D19338C4E4D812EDC7F3549707F6B6BB8E21E1D46E608D5D3D91FFF9D43AF393
+      CA1CF36B3BD2907073F4B6BB06C6E4D84D9B74E0ADF8F32ECF44B96A46A8155A
+      85E88317AC535F81C44FABC3A732ABFBDAAE55881E66843E0563714CC666F7C1
+      237BAEE15D934DEDEF74177F8659E0B7109AA7213A5F14AC09E5146708AB2B39
+      B132ABAB6BC37CFE0C33477F278A1BB13866CD3D76635EB3263D790A63F59B19
+      EFC118AF4718106E4A3EDA75FCB5D12DCC0053639E7262E5FAFB75389F315E06
+      600CC6E2985FEE919A72D7ED4333FD7FA3631BE761803FC2CDD0325C17BC309D
+      2F0AD5AE519DBA96E17A9CED380F7D305FC610E7005FE7A1AD781D5ACCE6ED9D
+      C66FFC6867D5305AF7A542E978234DD13A421F8DC28917AECD8995591DDBC76C
+      982DF361BE1C83B11A78D5C0EBD072366FE7A4178D1F6E41079BBF30C0450393
+      832D3027CA1AF3A26B3427EA2557C7F6311B66CB7C385FC6F8FED68A3BBEB112
+      3B794A93DD78579625F2F41445BCC77BD9BCA8112BB33AB68FD930DB9A98B4FA
+      C12B7C53EE194BD3C6C37943BAAEE1CD1AA0CE9B37C88837572C5666756C1FB3
+      A9791ED3F45F3C336A263E5E0971FFFA89D5575CD7FEF31C6C60F3F1746E939B
+      C09F901BEF26FD599F9CA54B0445D22545059F2514144AFBF9F9766439534C74
+      54DF12FA5B909746B62E5FFC12DCA4F312DCA7D7CDAF460D683DCDD768796EB4
+      AD0AA26C0F20EAB50A225FEE40664A32D2E2C248A1DC6F764A1CE4376F329E27
+      3DF5BCF63D35E7CCC468A446B923D266778D1F2986E47C67643975BB796DFF47
+      F66BBE2CC6FE38325E6D46D2E3A99C120CA450565282DCC4B0CF2A2DCCC0E58B
+      1771F3FC71383BDAA228E3138A537C91F8683CF94C43A2F164E4BB5F86A7EE2C
+      D49D4323FAFC261BF9FA00924CA51173BF17A7A8DB6D512C10203B2114396209
+      F35270EECC295CFFEB383EDA59A3303D1605711F11ADD6917C241073AF07B2DF
+      ED87C7C3C9F5DE658CE84BFC57FB906C3E07719AFD39C5A87781A0B008392951
+      C8498E446E4A24C73F71EC08AE9E3B8E776FAC5098C9DE2F382196B8715A0310
+      A72189ECF7BBE1A9770973A564956A736C8E6FB3072916F310A7339853ECFD9E
+      282A2C446E5A1C299693202709CFCCE8FE4B6917BCDC1C50909588DC18E26BF4
+      E67CE2B5FB22FCE131843F4EC27B35CF02E9914BB6B136183F82C633E5C942C4
+      EB8DE014A7D51FF9D9A9C84C4B20C5238B949D9E80BCAC6414E6A42237330959
+      E949C889788D4F3A0391AC3718DEC60AB0B27E05272327F8DDF786CD593E06F7
+      929A37A26F53D988E78A487DBA94C6752C121E8DA3364621F9ED4144DB9E219D
+      FEAC983A8AB63D8B34EB4D4837188C87EA4AB07FEB8098E868183D3680E94573
+      9C5DFBC0AF73DB9E63193FDC4A1E6956B248349A44F3600AFD4E46A2E178D2B8
+      069544CA341A05C3BB4AD8F83A055E51D1B07E6282AB572F4171AB420CB117B0
+      79C4F19F513F5EAC4692C94C243E9E5ED306CD37AE9D6F28D97812128CA74357
+      EB04B63914E2753A30ED39305DD519974EEE64F367A4F8597E23C60F7BB201E9
+      2FD721D94C863BE67C9FBBC8A7EBF5B754402AA26BB49ACE7D6217C02C0958FD
+      06E8F2A01CEB1FF0F1E6D618C6EFFA65FE10DF721D9D5F723487E620DF570355
+      4201A76AB16AFE2EA27211502E8085473236DB6673FD66ECEEBAC0929B4E4872
+      3C0E6FCDB15FCD7FE25BAC41A6ED16A43E598482C047A82C2E84202B059FC283
+      9095148BFC549AEBA99F509A978647AE9FA0F03A03AFD3809956D4EFBB022C39
+      678470B3152874DA07778D71DFE0AF42E65B9A4356CB511064840A413E3212A2
+      F0CECE0661FE9EF81411440A40406830E42D62604E3159650B74562FC23A4D5F
+      C45AEF4296B52C729D0E82FFE01B7CF395C8B2DB4163B01A052126282FCA476C
+      A83F7435EFC1C9FE15DEBFB5E6F87A8E01F0C92AC335FF4AF43100165DB5434A
+      5636F25C4F20C3661DF10F7F931F6A268B6C47256E0C0A293F292BCC41516622
+      E22203515E9889F4F808F88446E0C0331FA8FA1543DE341CEB54AD693C32B8B1
+      C9713D4BF1DD8CBC8F47C0BFFFF7F8879A2E47EEFBFDC8B6DB0A41C453941564
+      2335360C8EAF5FA0382B09FC8F0EB8AFAB8F458A2AB86E17065B575F14D1FA50
+      969B0291A00879FC8BC8B6DF817C97E3C497FA46FF97A1C0E5089E5C998F9298
+      1728CDCF4464A007B4EFDD86C3ABA748880E859AA60E5C5C9D91436B86283719
+      C2EC446A3B91F80528F456C5D3AB8B51C83FF56DBEE95214B99D80C5952510C6
+      BD82303F1DA5B49E8968CD2C2356596E12CAF292A98E31E321C8ACD5279415E7
+      43E0770B965797A3C8FD0CF1C7FC8D1F6EB61C028FF3D4C6499426D8A1BC5480
+      72F22B2FA991A8B861559697A29872D122FE19083C2FC1FD41FDF80F936C36C7
+      5EF58F4C773A2EFEBD5170D79A024FFDF9A479FF2CBD799C2D9F98EEF747736C
+      47D57EA2AFDE657724FD499AF88BF4E757CF876A9FEBB4123F47FAAF6A51F7F9
+      D0FFFAF9CFFFFAFDD7FFD7FF3BFA5573323CB578927B4064F7AFE7E7AF78D63B
+      4A66E5863B4E6905A395F4F59AB5EFD1E357F19BB5EFD978AAC2A54DCFFD12D3
+      F6B95563B45A7C51BBBE63647E05BF7967C9E62B6E385DB20C2B82B22BD0EF62
+      584E97510B8FB1F79BFF95DF5A6244E799474C8F3D092F820A1F18A6910F0999
+      1D17C4F74F4DFF0BBF45D7FE9D654E3E577B1E9E57ACEC060C25769F35570D7F
+      6BD96EC0B7DEBFFF14BBDB00C995F77CCC2C2304606C49B5ACB23E4B4F3D68D2
+      BCCDA0BAEF65FF0DBF75EFD123E65EB17FF93456C8C5E40F2D0106C96B9AB7EA
+      D67FFCD7DFA9FD2CBF59B741FDA75C7EFFE66582B07C1FF57BA04E1906EF7FE9
+      D0BC03F7AEBDF5D7EF067E86DF47B2F75896B3A8BDF6C542AB02F4BA5F523944
+      E5A57BCBAE7D651AFABEEE47F943870C9E6D64A097909A42F9D0073B1CBA6984
+      812AAFDDDB4A0C5FD6D0B7633FCAEF2B2931D6E4D1436227C3C7DB13467A3AB8
+      7AF6285A74ED375F7CFD6EFCB3FC16ADDBB75E72506DF171FB2CE7E3AFA9CF1E
+      5EF0E6BBE0A1E6031C5451CE983461FC2171BFBFFB2EA6017EA38EC7B69F5CF3
+      3E247BFFDB5C6C7A9E0D459330DC5253C7E1FD7BD37BF7E69E97FCFE9D6FC6BE
+      CFDFB17436EF9D7A41CB57EAE865698045A631986D9081997703D1BD5B57F6ED
+      418F1FF9F6E06FFCD62D5BF10EAD97E339DC4DE2BDB8099EC925F0B44FA2D14D
+      95EA7617AE14F454543323972E3FF24DEC37F9DD3BFDCEDBB2F0146FE37C7DDE
+      EAD946BC65338D780BA61AF164C6EBF3C60E39C56BD57CD4CF3EE7F92A3ECDC4
+      F7667DEA3CEBE957E79B9E16BFEA655D77C9B54A0BD6FA94CE5FEB83B9AB7D30
+      67950F66AFF4C1AC15DE9059EE8D99CBBC384D5FE251DAADF71AA59FB906B5ED
+      3C7FFDC1D361C25BDA99D8712203F287D3B1E9601AE4F6A761DDDE54ACDE9D82
+      153B53B07C7B12140EC462F9265F61FBAE0BD6FFC87B43C6DEB6CF3D4DD7341B
+      5356A563F0EC540C9E938A2173EB6B28F79B86B14B52A1A01283392BDEA789DB
+      687063C7B9EF78A850DB380B7FCE4FC79F0BD23172513A463520B66FC442A60C
+      6C548EC682B5DEC2AE12DF8C55A3765DE6AFDF7D384478F57E0666ACCFE47C46
+      2DCE80D4D20CE26460CC929A32132BB33A566636AC3C71451A566D8BC29C955E
+      C20EDDEAC78AB1D729BAA4DDD04C878C5C16F9676224F14FDC28848BB7882BB3
+      BAF1CB6B54BB9FED6336AC3C76591626AF4CC78AAD1198B2C0214DDC06AF55BB
+      D132EB77F8975DBE9B8A09B2D9184F925A9A852B1A45A8FDBCDD27A81C0BE473
+      3806132BB33AB6311B66CB7C26AEC8C6A4953958B2290C5317B997B56E3F5AA6
+      65DBD1CB761F09C12A25DAB72A075356E7906D3652322A3F3FEFAFAA029CBD44
+      C4CDE5C4CAACAE7663B6CC87F94E5D930B99756998B9D403C45F467CD91D0782
+      B072770EA6AFCDC58C75B998BC2A17072F15213DABAA5E1BEEFEE59CEAB2990D
+      B3653ECC9769D6FA74CC58E2CEF8B2141FD9ADFB02A9FF3914FB7CCC22B1DF29
+      ABF3B0F35411A2E32B1B7C67C4F6311B665BEBCB34472E03D316F13FF3372B05
+      60CD9E5CCCD95480B99B6BC4CAD3D6E693BF0029E9D57F63B33AB68FD9D4F59B
+      BBB91073376562CAC22F7CB99DFE58A39487F95B0A315F5E2C2ACF922BA4BE15
+      2039ADEA6F7C56C7F6319B7A7EF245984FFC49F3DD3EF3D72AFA62DD9E7C2CDE
+      5AFC59F3371763C3FE620484371C1FB68FD930DBBABE0B37D33C9CF385BF52DE
+      87D695022CDD5E8265A4C58A25B4DE08E11950596F2CD332AB39D51D7366B399
+      6C99CF32CE5F88456C2ECF72FDCC5FB6D11BEB950B68CD2A85EC4EDAAF20847F
+      68553D76664E354EDD107162E57AF3CAAF92FA2D247F2156EE2AC562855C8C96
+      76A9E52F5FB0C6AB6AA372268DB188E65119F5A10C8E6E952813D53052A9CF47
+      AF8AB0745B19A763D7449F8F83D9BC73ABE27C5693EFDABD22CCDF908251335D
+      AA88BFBC69F3EE5243C7DD755BB1C5BF4A4E3917EB94CBB97636AA88F0D6A912
+      2542E0D6C30A2CDF21E27C9956ED16E1B66E05B78FD9305B56BF615F39166FA1
+      F543865FD57FE41D37C6664B32FDCE1E32FEA1FF0A85205A0773C9BE92C6A31C
+      8A472B70E25A25D6EE29E77CE5F6D78895591DDBC76CD6539F361DA8C4D2AD59
+      1837C71383A474FC19B3CE37F52C6F1C3A78DC437FBA6655AD57CAC296435534
+      6E9534CE95DCEF96AF54779FFCE16A2C954FA77EBB550D1AA3C3DE7F0D1533EB
+      7D23C3DAFC63CC1DB7D92BBDAA36ECCDA3BE5573DA7AA4EA9BAADDBF727B0EC7
+      EE3F52CD4DDCEFD60D5CCBDA736D8C7DE83F7B851FE494F3B0EB14EAEB34B0BB
+      8E56EFCCC1B8B95E1838E6734CFEE9FD17172BD6C684B96E5513E6BAD2B9E28A
+      71B35D2025E38CD1333F62E48C8F18318D349D959DAB06493DFC564CBEFB3D11
+      EB4B7749059DEE7DB61A7D5F0A3AFF1093062FF5A4DE5FE541DF52EFEFFCEF45
+      83DBD861FDFB5DD8BF6163B89DCE8B7857B3FC04F72748E0D728DECDBC24FAFD
+      231F73B5237BC60EEF3FBC4DAB163FFC9D763F89EEBFC9CBCA6C887A6FE89215
+      E15C55921E8AEAA24F404912509C089466A25A980951413272627DABE3DC2CC3
+      2E1F90BB2435ACFF3FB63140B2476BF3DB078FC7F19FE6880A12509D170064D1
+      4D5626DD3467B90339DE407E0850180588726975A846796911B263BC2A5EDE3F
+      A6233371448371EAD1A5431347A3CB9773A3895514438BA5035DFCDE139B6E10
+      73FC80BC60E246D231C4D3B1A4D2C226FABCC055978B5092168380571AB6F3A6
+      8E96FCD69C39B767ED96F4C037D467EA5F861371DD6AFA9B17081444008238E2
+      26537CB2800A01759DD6D7F272541416A22C231365A914AF0877D8689FD5FF3A
+      7F9F3365D410FE53B580CA3CE264517FB33C805C8A4D4158CDB11453EC4B3328
+      2679C42EA13E57A08A1293F2BC3C085352501419813C6F2F94C48623D1F345C5
+      AEF5F3A77E7E99DCB279F3B37BD7DDCC8F75AF46AE5F1D6EAC989B49CC22EA2F
+      E524953531A92A2D435966260431D1C80FF043AE97070A82FC51121743F59F60
+      A676C4A56BA7F6DCFF6B8DF8A3CF405F1B4D97B24C1687508A7134C5220110A6
+      D7F4B75288726111B2A2BD90E46B8B8C08370873D220CACA46AE8F17F27C3C51
+      181A8492C438AA4B4775A900111F1E276E5C3A730E8BFB9861FD67C6B93FCDAD
+      CAA7B113D0D80969EC4AB38172EA73553985B912B11F1E21F4E54D843C5745E8
+      8BEB88B6D78120259686249662130A61723CC52A8B8E8B8D4B25B2225C848AAB
+      661F66F77F52C3FB2F4B0DB6A70B11C5B72C47CCA5A4AFBAE6FA9419EC80E8D7
+      B7E06E72314BF7C24E0747DDD3F1D1B66A88FFA0876A1A0351763A2A8BD8B894
+      D6CCA9EA0A1465C662C79AB9D7D93D209D17B229A11F685FB1982BCE17885F5D
+      21420AFF31E2ECD4CB4FEC58FEA059D3DF462E9C3E7A77CC5BF592B837375149
+      FDAD2E2F15FB89C4BF6528CA8AC5F635736FB27BB51ABE6BBDBCA39ACD3B8100
+      952525C8F43647B2934695DEE5DD6ADD3AB56B776AD70AB9A40F1AE529EFEF50
+      EC2AB8738C3A4FA276C0E6412EF53FF4337FCCB07ECB93825DB84CA1BAB29263
+      8AB2B351121F8FD2F474142704D0E9AB4DA7B12E325C7412B3F9BAC8F7D441B2
+      B72DB48CD2B044CE1F13E67B91BCA9EC072D9D10C4847A54EF5A3F877DABDC74
+      E4E0BE73C25CAD332BCA689EB0738531636391EFE783FCA00094E7E6A038E623
+      0A7C8C91EF41E3EA6B80C88FD65039EA8DDD271270F8720EF69ECB23E573E5DD
+      2712B173AF63E97CE9C527197FA064CFE1AF0C549D8AD39250CACE95F0709A73
+      5FE69D302589E645092A8BB350911385129A9B37EF46E2E0F924C8A9E4D13D5A
+      16462FCEE4C4CA722AF9387A31B16AC8382D8DA62D7AB173A08DDCB299E7A29C
+      6D8485818135E74AA01F8AE3A2504A6D56E467D3D0D1395BC9C6AE1421E119D8
+      7138127207F2E83E86DD7364639C58ACCCEAB61CCEC3FA9DC199ADDA8E64E7F1
+      6FFD257B8C31533FE99FE9E94AFD0FA1D8C7D4CC3B417ECDFCA0730C65340745
+      1970F3A2FB38B968CCA59C56CB44088DC725F5C4EAE6519EBB76672C28775B5A
+      7B0B367EE4A0B5210E26148F04AECF5565E23ED339C69D176C6D2BF904BE5708
+      A62C8BC16CB986BF5F9BBD9172DE0D8C3F4AB6CEB7209DE557CD39E2FEDA384B
+      984F6B242AD944ADE93B5B8B0AE8FC2E0881978F37262E8AE2F2CD399B8A21B3
+      81B45E2C2AB3BAA5DB8498B62C42D4BADDA8A575DFF3346FD65472DE74A9FD6F
+      CDEE25E5A444D33249FD2FCBE6B8DCBA47EB757AAC2B7628FB105F4039614D2E
+      B986F24E4E7B445CDD8A1D451835DDC6BB45EB01525F7F37D3A449E39E03FBF4
+      5CF348EDC4BB2027CBAAF470075466D27A9DE7497C5754E538E2B9A53D645604
+      531E072ECFFB9CD75159FE5035262FF22DECD177DBA9468D9B756AE0BB19F6ED
+      F4C0A10325971C505C79F7C689EDAE6A67760532DD39BB2BF0C1F9ED1ECB961C
+      B51D35D33E7199425AF986BDF9605AB635AD5C6A967D425709B9E3E26750DF7B
+      BED54CFC7C8DE51F43C4EFCD6A358CE5536D3A4C5CD34562E3DDAEBDE58D9858
+      B96DA749ABC5EC663F986B35113F0B6BFA0DD57E1B549B0BD57E13D4A4EEF3A5
+      F8F8785E5254C088DCC410E99C84FFAEDCC4D0A9E181DE9FDF5F9C3F7FBEE9F5
+      EDD3DF453B1B21CAC9E03F2BE8959A506ED690836C2CC5FC56AA8A93F9282FA0
+      DCC1972E2A2CEFF917CAF4277F1FE42604414EE60FEEFA22E6B7BEBA75221FA2
+      4208FC3491F34E05791F0E22FF838A580790F7FE1072BFA70F8790E5A00C5194
+      15721282B1417AD0CDDAF70B5FF845280ED041B9EF25E40469C234E81DB4833E
+      C23DC80A08BA49BA4D52FBB682D520E09F8128C6A6617EB900C581BA28F7BB8C
+      937EF198E957856994B2ACF12B023FF02510A24EBAF76D85DE87C0FD1C44B16F
+      1AE653EE541CA48FF2C0AB184D699634A59CB34893481AFE740E873F20690311
+      DA480BD1465CB076CDDF9CE8DAE37101A24F0EDFE10B511CFC08E5213721E322
+      C2948FC07467D06F158CFDA991A887247D7C0AD583B2930ED638EA20244897AB
+      43D423083C2F4314FFAE613EAD95C52146280FBD8737816E98F94E84E176C011
+      7E0AB2A32C81182320EE31F4BCF431D6461352A41BAEBA288B3106624D20F0BA
+      0A51A213F1831AE0974210F218A270EA67821989FC1288196F027C32A7B225DE
+      051A62F9AB7B1863750752A4C53677E14075487C0A81CF7588925DBFC32F8320
+      D414A24803B2A73993F04C2CAB9ABF535E628CC5750C37BF8E31963738B1B294
+      C50D20D59AAEFD3789CF6F984FD72A419819CD61EA77CA2B20D9A6BED26D2169
+      7801431E5FC248F3CB9C5899D521E32D04FEB7214AF56C38FE94DB09C32D5011
+      6741F68E2487FACA744464F40B6C7BAB8E51C71E7262655687AC771006AAA322
+      DDB781FE4FE0B3DCD039D00A3A7EFA308C7C06C388A7F5457546D15630497C01
+      9993BA9C5899D519D2797BF7E34D24A4058AFB3FF0EF7C54E196F72B4C7D730B
+      F33F6A60BED357FA58A3457C0D8CD8A5CE89956BEB473FBB08F794B0EFF0813B
+      94E34F7E7E19736C6F362CCA6DE73AD4889559DD6CD268F3B3F0488BFC2EFFA6
+      CF6B0C313E4EB66730DAEC3B323FF3379BFE0687C14F6D80AF50C34F2A62FF17
+      1B03AFF4B89F9227C93D2D1A856582EFF26BF2FF8A7FA7EA0A2E6FFA165F75EB
+      247E9D3B80FF204A95882F27537F7E5EDB3EFD8387F109B81B1EFBCFFAA8B3AF
+      78F58C4147EAF0592ED1FF177E03345AFCFFBFB5D7DF46E27CA5F52F52CBDAF7
+      7BB5F9C9FFEAFB9FFF0360A71431
+    }
+  end
+  object DataSourceMovies: TDataSource
+    AutoEdit = False
+    DataSet = DM.ZTableMovies
+    OnDataChange = DataSourceMoviesDataChange
+    Left = 163
+    Top = 195
+  end
+  object DataSourceTypes: TDataSource
+    DataSet = DM.ZTableTypes
+    Left = 163
+    Top = 256
+  end
+  object DataSourceEmissoras: TDataSource
+    DataSet = DM.ZTableEmissoras
+    Left = 163
+    Top = 320
+  end
+  object DataSourceGenders: TDataSource
+    DataSet = DM.ZTableGenders
+    Left = 163
+    Top = 392
+  end
+  object DataSourceClassifications: TDataSource
+    DataSet = DM.ZTableClassification
+    Left = 163
+    Top = 464
+  end
+  object DataSourceCountries: TDataSource
+    DataSet = DM.ZTableCountries
+    Left = 272
+    Top = 195
+  end
+  object DataSourceQualities: TDataSource
+    DataSet = DM.ZTableQualities
+    Left = 272
+    Top = 256
+  end
+  object DataSourcePlaces: TDataSource
+    DataSet = DM.ZTablePlaces
+    Left = 272
+    Top = 320
+  end
+  object OpenDialogImage: TOpenDialog
+    Filter = 'Arquivo de Imagem|*.png;*.jpg;*.jpeg'
+    Left = 1128
+    Top = 512
+  end
+end

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="12"/>
+    <PathDelim Value="\"/>
+    <General>
+      <SessionStorage Value="InProjectDir"/>
+      <Title Value="MovieRegister"/>
+      <Scaled Value="True"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <XPManifest>
+        <DpiAware Value="True"/>
+      </XPManifest>
+      <Icon Value="0"/>
+    </General>
+    <BuildModes>
+      <Item Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+    <RunParams>
+      <FormatVersion Value="2"/>
+    </RunParams>
+    <RequiredPackages>
+      <Item>
+        <PackageName Value="FCL"/>
+      </Item>
+      <Item>
+        <PackageName Value="zcomponentdesign"/>
+      </Item>
+      <Item>
+        <PackageName Value="zcomponent"/>
+      </Item>
+      <Item>
+        <PackageName Value="DateTimeCtrlsDsgn"/>
+      </Item>
+      <Item>
+        <PackageName Value="DateTimeCtrls"/>
+      </Item>
+      <Item>
+        <PackageName Value="LCL"/>
+      </Item>
+    </RequiredPackages>
+    <Units>
+      <Unit>
+        <Filename Value="MovieRegister.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unitmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitMain"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unitcountries.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormCountries"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitCountries"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unitgenders.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormGenders"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitGenders"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unitclassification.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormClassifications"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitClassification"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unittypes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormTypes"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitTypes"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unitemissoras.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormEmissoras"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitEmissoras"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unitqualities.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormQualities"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitQualities"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unitplaces.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormPlaces"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitPlaces"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unitdatamodule.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DM"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="unitDataModule"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unitabout.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormAbout"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitAbout"/>
+      </Unit>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="MovieRegister"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf3"/>
+      </Debugging>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions>
+      <Item>
+        <Name Value="EAbort"/>
+      </Item>
+      <Item>
+        <Name Value="ECodetoolError"/>
+      </Item>
+      <Item>
+        <Name Value="EFOpenError"/>
+      </Item>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

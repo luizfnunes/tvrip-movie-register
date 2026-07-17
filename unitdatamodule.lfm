@@ -1,0 +1,102 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 378
+  HorizontalOffset = 293
+  VerticalOffset = 177
+  Width = 315
+  object ZConnectionMain: TZConnection
+    ControlsCodePage = cCP_UTF8
+    Properties.Strings = (
+      'RawStringEncoding=DB_CP'
+    )
+    Connected = True
+    DisableSavepoints = False
+    HostName = '127.0.0.1'
+    Port = 0
+    Database = 'F:\Projects\Lazarus\Movie Register\database\MOVIES.FDB'
+    User = 'SYSDBA'
+    Password = 'masterkey'
+    Protocol = 'firebird'
+    LibraryLocation = 'F:\Projects\Lazarus\Movie Register\database\FBCLIENT.DLL'
+    Left = 88
+    Top = 32
+  end
+  object ZTableCountries: TZTable
+    SortedFields = 'PAIS'
+    Connection = ZConnectionMain
+    AfterPost = ZTableCountriesAfterPost
+    Active = True
+    TableName = 'PAISES'
+    IndexFieldNames = 'PAIS Asc'
+    Left = 88
+    Top = 96
+  end
+  object ZTableGenders: TZTable
+    SortedFields = 'GENERO'
+    Connection = ZConnectionMain
+    AfterPost = ZTableGendersAfterPost
+    Active = True
+    TableName = 'GENEROS'
+    IndexFieldNames = 'GENERO Asc'
+    Left = 88
+    Top = 160
+  end
+  object ZTableClassification: TZTable
+    SortedFields = 'CLASSIFICACAO'
+    Connection = ZConnectionMain
+    AfterPost = ZTableClassificationAfterPost
+    Active = True
+    TableName = 'CLASSIFICACOES'
+    IndexFieldNames = 'CLASSIFICACAO Asc'
+    Left = 88
+    Top = 224
+  end
+  object ZTableTypes: TZTable
+    SortedFields = 'TIPO'
+    Connection = ZConnectionMain
+    AfterPost = ZTableTypesAfterPost
+    Active = True
+    TableName = 'TIPOS'
+    IndexFieldNames = 'TIPO Asc'
+    Left = 208
+    Top = 32
+  end
+  object ZTableEmissoras: TZTable
+    SortedFields = 'EMISSORA'
+    Connection = ZConnectionMain
+    AfterPost = ZTableEmissorasAfterPost
+    Active = True
+    TableName = 'EMISSORAS'
+    IndexFieldNames = 'EMISSORA Asc'
+    Left = 208
+    Top = 96
+  end
+  object ZTableQualities: TZTable
+    SortedFields = 'QUALIDADE'
+    Connection = ZConnectionMain
+    AfterPost = ZTableQualitiesAfterPost
+    Active = True
+    TableName = 'QUALIDADES'
+    IndexFieldNames = 'QUALIDADE Asc'
+    Left = 208
+    Top = 160
+  end
+  object ZTablePlaces: TZTable
+    SortedFields = 'LOCAIS'
+    Connection = ZConnectionMain
+    AfterPost = ZTablePlacesAfterPost
+    Active = True
+    TableName = 'LOCAIS'
+    IndexFieldNames = 'LOCAIS Asc'
+    Left = 207
+    Top = 224
+  end
+  object ZTableMovies: TZTable
+    Connection = ZConnectionMain
+    AfterPost = ZTableMoviesAfterPost
+    Active = True
+    TableName = 'FILMES'
+    Left = 144
+    Top = 296
+  end
+end

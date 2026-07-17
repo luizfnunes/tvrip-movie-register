@@ -1,0 +1,203 @@
+object FormCountries: TFormCountries
+  Left = 232
+  Height = 490
+  Top = 124
+  Width = 640
+  Caption = 'Lista de Países'
+  ClientHeight = 490
+  ClientWidth = 640
+  Constraints.MinHeight = 490
+  Constraints.MinWidth = 640
+  Position = poDesktopCenter
+  LCLVersion = '4.6.0.0'
+  OnClose = FormClose
+  object GroupBox1: TGroupBox
+    Left = 7
+    Height = 403
+    Top = 7
+    Width = 626
+    Align = alClient
+    BorderSpacing.Around = 7
+    Caption = 'Países'
+    ClientHeight = 383
+    ClientWidth = 622
+    TabOrder = 0
+    object Panel1: TPanel
+      Left = 5
+      Height = 34
+      Top = 5
+      Width = 612
+      Align = alTop
+      BorderSpacing.Around = 5
+      BevelOuter = bvNone
+      Caption = 'Panel1'
+      ClientHeight = 34
+      ClientWidth = 612
+      TabOrder = 0
+      object LabelSearch: TLabel
+        Left = 5
+        Height = 24
+        Top = 5
+        Width = 41
+        Align = alLeft
+        BorderSpacing.Around = 5
+        Caption = 'Buscar: '
+        Layout = tlCenter
+      end
+      object EditSearch: TEdit
+        Left = 51
+        Height = 24
+        Top = 5
+        Width = 482
+        Align = alClient
+        BorderSpacing.Around = 5
+        TabOrder = 0
+      end
+      object SBSearch: TSpeedButton
+        Left = 538
+        Height = 30
+        Top = 2
+        Width = 32
+        Align = alRight
+        BorderSpacing.Left = 3
+        BorderSpacing.Right = 3
+        BorderSpacing.Around = 2
+        Images = FormMain.ImageListMain
+        ImageIndex = 0
+        OnClick = SBSearchClick
+      end
+      object SBClear: TSpeedButton
+        Left = 575
+        Height = 30
+        Top = 2
+        Width = 32
+        Align = alRight
+        BorderSpacing.Left = 3
+        BorderSpacing.Right = 3
+        BorderSpacing.Around = 2
+        Images = FormMain.ImageListMain
+        ImageIndex = 1
+        OnClick = SBClearClick
+      end
+    end
+    object DBGrid1: TDBGrid
+      Left = 5
+      Height = 302
+      Top = 44
+      Width = 612
+      Align = alClient
+      AutoEdit = False
+      AutoFillColumns = True
+      BorderSpacing.Around = 5
+      Color = clWindow
+      Columns = <      
+        item
+          Title.Caption = 'País'
+          Width = 579
+          FieldName = 'PAIS'
+        end>
+      DataSource = DataSourceCountries
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+      TabOrder = 1
+    end
+    object PanelRegistry: TPanel
+      Left = 0
+      Height = 32
+      Top = 351
+      Width = 622
+      Align = alBottom
+      BevelOuter = bvNone
+      Caption = 'Total de Registros: 12'
+      TabOrder = 2
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 7
+    Height = 66
+    Top = 417
+    Width = 626
+    Align = alBottom
+    BorderSpacing.Around = 7
+    Caption = 'Ações'
+    ClientHeight = 46
+    ClientWidth = 622
+    TabOrder = 1
+    object BtnNew: TBitBtn
+      Left = 7
+      Height = 32
+      Top = 7
+      Width = 115
+      Align = alLeft
+      BorderSpacing.Around = 7
+      Caption = 'Novo'
+      Enabled = False
+      Images = FormMain.ImageListMain
+      ImageIndex = 2
+      TabOrder = 0
+      OnClick = BtnNewClick
+    end
+    object BtnSave: TBitBtn
+      Left = 129
+      Height = 32
+      Top = 7
+      Width = 115
+      Align = alLeft
+      BorderSpacing.Around = 7
+      Caption = 'Salvar'
+      Enabled = False
+      Images = FormMain.ImageListMain
+      ImageIndex = 3
+      TabOrder = 1
+      OnClick = BtnSaveClick
+    end
+    object BtnEdit: TBitBtn
+      Left = 251
+      Height = 32
+      Top = 7
+      Width = 115
+      Align = alLeft
+      BorderSpacing.Around = 7
+      Caption = 'Editar'
+      Enabled = False
+      Images = FormMain.ImageListMain
+      ImageIndex = 4
+      TabOrder = 2
+      OnClick = BtnEditClick
+    end
+    object BtnDelete: TBitBtn
+      Left = 495
+      Height = 32
+      Top = 7
+      Width = 115
+      Align = alLeft
+      BorderSpacing.Around = 7
+      Caption = 'Excluir'
+      Enabled = False
+      Images = FormMain.ImageListMain
+      ImageIndex = 6
+      TabOrder = 3
+      OnClick = BtnDeleteClick
+    end
+    object BtnCancel: TBitBtn
+      Left = 373
+      Height = 32
+      Top = 7
+      Width = 115
+      Align = alLeft
+      BorderSpacing.Around = 7
+      Caption = 'Cancelar'
+      Enabled = False
+      Images = FormMain.ImageListMain
+      ImageIndex = 5
+      TabOrder = 4
+      OnClick = BtnCancelClick
+    end
+  end
+  object DataSourceCountries: TDataSource
+    DataSet = DM.ZTableCountries
+    OnStateChange = DataSourceCountriesStateChange
+    OnDataChange = DataSourceCountriesDataChange
+    Left = 304
+    Top = 200
+  end
+end
